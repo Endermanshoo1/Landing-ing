@@ -36,6 +36,12 @@ ScrollReveal().reveal(".about__image img", {
   origin: "left",
 });
 
+// about container
+ScrollReveal().reveal(".about__image2 img", {
+  ...scrollRevealOption,
+  origin: "left",
+});
+
 ScrollReveal().reveal(".about__content .section__subheader", {
   ...scrollRevealOption,
   delay: 500,
@@ -88,3 +94,11 @@ document.addEventListener("DOMContentLoaded", function () {
   animateCount(document.getElementById("completed-jobs-count"), 350, 2000);  
   animateCount(document.getElementById("happy-customers-count"), 600, 2000);  
 });    
+
+window.onscroll = function() {  
+  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;  
+  let windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;  
+  let scrollPercentage = (scrollTop / windowHeight) * 100;  
+
+  document.getElementById('progressBar').style.width = scrollPercentage + '%';  
+};  

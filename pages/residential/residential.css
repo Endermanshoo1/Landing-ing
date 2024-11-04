@@ -400,6 +400,7 @@ list-style: none;
   flex-wrap: wrap;
   border-radius: 10px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  background: white;
 }
 
 .banner__card {
@@ -647,3 +648,20 @@ list-style: none;
   font-size: 16px;  
   color: #555;  
 }   
+
+.progress-bar {  
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background-color: #f88d02ab;
+  width: 0;
+  transition: width 0.25s;
+  z-index: 1000;  
+} 
+
+@media (max-width: 600px) {  
+  .progress-bar {  
+      height: 3px; /* Ajusta la altura de la barra en pantallas pequeñas */  
+  }  
+}  

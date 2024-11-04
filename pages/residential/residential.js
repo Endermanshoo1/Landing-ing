@@ -117,3 +117,11 @@ setInterval(nextSlide, 2000);
 
 // Mostrar la primera diapositiva al cargar  
 showSlide(currentSlide);  
+
+window.onscroll = function() {  
+  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;  
+  let windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;  
+  let scrollPercentage = (scrollTop / windowHeight) * 100;  
+
+  document.getElementById('progressBar').style.width = scrollPercentage + '%';  
+};
