@@ -33,7 +33,13 @@ ScrollReveal().reveal(".header__container h1", {
 // about container
 ScrollReveal().reveal(".about__image img", {
   ...scrollRevealOption,
-  origin: "left",
+  origin: "right",
+});
+
+// about container
+ScrollReveal().reveal(".about__image2 img", {
+  ...scrollRevealOption,
+  origin: "right",
 });
 
 ScrollReveal().reveal(".about__content .section__subheader", {
@@ -57,7 +63,7 @@ ScrollReveal().reveal(".about__btn", {
 });
 
 // room container
-ScrollReveal().reveal(".room__card", {
+ScrollReveal().reveal(".card__container", {
   ...scrollRevealOption,
   interval: 500,
 });
@@ -88,35 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
   animateCount(document.getElementById("completed-jobs-count"), 350, 2000);  
   animateCount(document.getElementById("happy-customers-count"), 600, 2000);  
 });    
-
-let currentSlide = 0;  
-const totalSlides = document.querySelectorAll('.review-card').length;  
-
-function showSlide(index) {  
-    const slides = document.querySelectorAll('.review-card');  
-    if (index >= totalSlides) {  
-        currentSlide = 0; // Volver al principio  
-    } else if (index < 0) {  
-        currentSlide = totalSlides - 1; // Ir al final  
-    } else {  
-        currentSlide = index;  
-    }  
-
-    const carouselInner = document.querySelector('.carousel-inner');  
-    const offset = -currentSlide * 101; // Mover el carrusel  
-    carouselInner.style.transform = `translateX(${offset}%)`;  
-}  
-
-// Función para mover al siguiente slide automáticamente  
-function nextSlide() {  
-    showSlide(currentSlide + 1);  
-}  
-
-// Cambio automático cada 4 segundos  
-setInterval(nextSlide, 2000);  
-
-// Mostrar la primera diapositiva al cargar  
-showSlide(currentSlide);  
 
 window.onscroll = function() {  
   let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;  

@@ -63,7 +63,7 @@ ScrollReveal().reveal(".about__btn", {
 });
 
 // room container
-ScrollReveal().reveal(".room__card", {
+ScrollReveal().reveal(".card__container", {
   ...scrollRevealOption,
   interval: 500,
 });

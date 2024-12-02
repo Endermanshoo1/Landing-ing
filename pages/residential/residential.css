@@ -178,9 +178,11 @@ nav {
   text-align: left;
 }
 
-.header__container h1 span {
-  color: #f88d02;
-}
+.header__container h1 span {  
+  color: #f88d02; /* Color del texto */  
+  text-shadow: 0 0 5px rgba(248, 141, 2, 0.7), 0 0 10px rgba(248, 141, 2, 0.5), 0 0 15px rgba(248, 141, 2, 0.4); /* Efecto de resplandor */  
+  transition: text-shadow 0.3s ease; /* Para una transición suave si se desea*/  
+}  
 
 .booking__container {
   padding-block: 0;
@@ -238,15 +240,25 @@ nav {
 
 .about__container {
   overflow: hidden;
-  display: flex;
+  display: grid;
   gap: 2rem;
-  flex-direction: row-reverse;
 }
 
-.about__image img {
-  max-width: 450px;
-  margin: auto;
-  border-radius: 5px;
+.about__content{
+  width: 380px;
+}
+
+.about__image{
+  display: none;
+}
+
+.about__image2{
+  display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 380px;
+    height: 373px;
+    margin-top: 17px;
 }
 
 .room__grid {  
@@ -258,68 +270,83 @@ nav {
 
 @media (min-width: 600px) {  
   .room__grid {  
-    display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsivo */  
-    gap: 20px; /* Espacios entre tarjetas */  
-}   
+      grid-template-columns: repeat(3, 1fr); /* Tres columnas en pantallas más grandes */  
+  }  
 }  
 
 .room__card {  
-  position: relative;  
-  overflow: hidden;  
-  border-radius: 10px;  
-  transition: box-shadow 0.3s;  
-  display: flex;  
-  flex-direction: column;  
-  align-items: center;  
-  padding: 40px;  
-  border: 7px solid #a3a3a3;  
-  text-align: center; /* Alinear texto al centro */  
+  position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    border: 7px solid #a3a3a3;
+  
 }  
 
 .room__card:hover {  
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);  
+  box-shadow: 0 0 15px rgba(248, 141, 2, 0.8), 0 0 30px rgba(248, 141, 2, 0.6); /* Efecto brillante */  
 }  
 
-.room__card__hover-text {
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: bottom 0.3s;
-  background-color: white;
-  padding: 10px;
-  border-radius: 5px;
-  width: 98%;
-  text-align: left;
-  z-index: 2;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  font-size: 11px;
-}
+.room__card__image {  
+  position: relative;  
+  isolation: isolate;  
+  height: 150px; /* Puedes ajustar la altura según tus necesidades */  
+  background-color: #f0f0f0; /* Color de fondo previo a la imagen */  
+}  
 
-.textsection{
-  max-width: 875px;
-    margin-bottom: 1rem;
-    color: var(--text-light);
-    line-height: 35px;
-}
+.room__card__details {  
+  padding: 1rem;  
+  position: relative; /* Necesario para el texto de hover */  
+}  
 
-.room__card__hover-text ul{
-list-style: none;
-}
+.room__card__hover-text {  
+  position: absolute;  
+  bottom: -40px; /* Fuera de la vista inicialmente */  
+  left: 50%;  
+  transform: translateX(-50%);  
+  transition: bottom 0.3s;  
+  color: var(--text-light);  
+  background-color: var(--white);  
+  padding: 5px;  
+  border-radius: 5px;  
+  width: 90%;  
+  text-align: center;  
+  z-index: 2; /* Asegurarse de que esté por encima del contenido */  
+}  
 
 .room__card:hover .room__card__hover-text {  
   bottom: 10px; /* Se muestra al hacer hover */  
-  visibility: visible; /* Hacer visible */  
-  opacity: 1; /* Hacer visible */  
 }  
 
+.room__card__icons {  
+  position: absolute;  
+  right: 1rem;  
+  bottom: 1rem;  
+  display: flex;  
+  align-items: center;  
+  justify-content: flex-end;  
+  flex-wrap: wrap;  
+  gap: 1rem;  
+  z-index: 3; /* Encima del texto */  
+}  
+
+.room__card__icons span {  
+  display: inline-block;  
+  padding: 2px 8px;  
+  font-size: 1.5rem;  
+  background-color: var(--white);  
+  border-radius: 100%;  
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);  
+  cursor: pointer;  
+}  
 
  
 .service {
-  background-image: url("/img/3d-STR.02\ \(1\).png");
+  background-image: url("/img/SECT.02\ \(1\).png");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -328,7 +355,7 @@ list-style: none;
 .service__container {
   padding-block: 0;
   display: grid;
-  margin-left: -540px;
+
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -336,6 +363,7 @@ list-style: none;
   grid-column: 1/3;
   padding: 2rem 4rem;
   background-color: var(--white);
+  margin-top: 70px;
 }
 
 .service__list {
@@ -349,18 +377,9 @@ list-style: none;
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 15px;
+  font-size: 1.2rem;
   font-weight: 500;
   color: var(--text-dark);
-  flex-wrap: wrap;
-}
-
-.microinfo{
-  max-width: 897px;
-  font-size: 14px;
-  margin-bottom: -1rem;
-  color: var(--text-light);
-  margin-left: 40px;
 }
 
 .service__list span {
@@ -588,8 +607,31 @@ list-style: none;
   }
 
   .about__container {
-    grid-template-columns: repeat(2, 1fr);
     align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .about__content{
+    width: 500px;
+  }
+
+  .about__image{
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 248px;
+    height: 373px;
+    margin-top: -140px;
+  }
+
+  .about__image2{
+    display: flex;
+      border-radius: 5px;
+      overflow: hidden;
+      width: 248px;
+      height: 373px;
+      margin-top: 40px;
   }
 
   .room__grid {
@@ -616,39 +658,6 @@ list-style: none;
   height: 40px;
 }
 
-.carousel {  
-  position: relative;  
-  width: 100%;  
-  overflow: hidden;  
-  margin: auto;  
-}  
-
-.carousel-inner {  
-  display: flex;  
-  transition: transform 0.5s ease;  
-}  
-
-.review-card {  
-  flex: 0 0 100%;  
-  box-sizing: border-box;  
-  padding: 20px;  
-  border: 1px solid #ddd;  
-  border-radius: 8px;  
-  background-color: #fff;  
-  text-align: center;  
-  margin: 6px;  
-}  
-
-.user-icon {  
-  font-size: 30px;  
-}  
-
-.review-text {  
-  margin-top: 10px;  
-  font-size: 16px;  
-  color: #555;  
-}   
-
 .progress-bar {  
   position: fixed;
   top: 0;
@@ -665,3 +674,173 @@ list-style: none;
       height: 3px; /* Ajusta la altura de la barra en pantallas pequeñas */  
   }  
 }  
+
+
+/*=============== CARD ===============*/
+.container {
+  display: grid;
+  place-items: center;
+  margin-inline: 1.5rem;
+  padding-block: 5rem;
+}
+
+.card__container {
+  display: grid;
+  row-gap: 3.5rem;
+}
+
+.card__article {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+
+}
+
+.card__img {
+  width: 290px;
+  height: 250px;
+  border-radius: 1.5rem;
+}
+
+.card__data {
+  width: 280px;
+  background-color: var(--container-color);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -9rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+
+.card__description {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
+}
+
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
+
+.card__button {
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+}
+
+.card__button:hover {
+  text-decoration: underline;
+}
+
+/* Naming animations in hover */
+.card__article:hover .card__data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+  background-color: var(--white);
+
+}
+
+.card__article:hover {
+  animation: remove-overflow 2s forwards;
+  background-color: var(--white);
+
+}
+
+.card__article:not(:hover) {
+  animation: show-overflow 2s forwards;
+  background-color: var(--white);
+
+}
+
+.card__article:not(:hover) .card__data {
+  animation: remove-data 1s forwards;
+  background-color: var(--white);
+}
+
+/* Card animation */
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
+  }
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .card__data {
+    width: 250px;
+    padding: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .card__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1120px) {
+  .container {
+    height: 100vh;
+  }
+
+  .card__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card__img {
+    width: 348px;
+    height: 356px;
+  }
+  .card__data {
+    width: 316px;
+    padding-inline: 2.5rem;
+  }
+}
